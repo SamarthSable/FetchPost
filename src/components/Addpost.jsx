@@ -42,7 +42,12 @@ export default function Addpost() {
   return (
     <div
       className="flex items-center justify-center min-h-screen bg-black/40"
-      onClick={() => setModal(false)}
+      onClick={() => {
+        setModal(false);
+        setEditPost("");
+        setBody("");
+        setTitle("");
+      }}
     >
       <form
         className="flex flex-col w-[400px] bg-white p-6 rounded-xl gap-3"
