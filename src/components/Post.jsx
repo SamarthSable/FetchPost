@@ -4,14 +4,18 @@ import { Link } from "react-router-dom";
 import Addpost from "./Addpost";
 
 export default function Post() {
-  const { post, SetPost, setEditPost, modal, setModal } =
+  const { post, SetPost, setEditPost, modal, setModal, loading } =
     useContext(PostContext);
 
   function handleDelete(id) {
     SetPost(post.filter((p) => p.id !== id));
   }
-
+  if (loading)
+    return <h1 className="text-3xl font-bold text-center mt-10">Loading...</h1>;
+  if (post.length === 0)
+    return <h1 className="text-3xl font-bold text-center mt-10">No Post</h1>;
   if (modal) return <Addpost />;
+
   return (
     <div>
       <div className="grid grid-cols-3 gap-2 text-center items-center">
